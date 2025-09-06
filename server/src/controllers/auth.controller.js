@@ -74,8 +74,8 @@ export const logout = asyncHandler(async (req, res, next) => {
     // Clear the authentication cookie
     res.clearCookie("suneditorToken", {
       httpOnly: true,
-      // secure: true,
-      // sameSite: "none",
+      secure: true,
+      sameSite: "none",
     });
 
     return res.status(200).json({

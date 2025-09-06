@@ -9,15 +9,20 @@ if (process.env.NODE_ENV !== "PRODUCTION") {
 import app from "./app.js";
 import connectDatabase from "./config/db.js";
 
-// Connect to database
-connectDatabase();
+const startServer = async () => {
+  try {
+    // Connect to database
+    await connectDatabase();
 
-export default app;
+    // Server start
+    const PORT = process.env.PORT || 9010;
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on http://localhost:${PORT}`);
+    });
+  } catch (err) {
+    console.error("❌ Error starting server:", err.message);
+    process.exit(1);
+  }
+};
 
-// For local development
-if (process.env.NODE_ENV !== "PRODUCTION") {
-  const PORT = process.env.PORT || 5000;
-  app.listen(PORT, () => {
-    console.log(`✓ Server running on http://localhost:${PORT}`);
-  });
-}
+startServer();
