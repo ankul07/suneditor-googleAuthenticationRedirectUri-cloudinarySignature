@@ -74,9 +74,9 @@ const Home = () => {
   };
 
   // Load blogs on component mount
-  useEffect(() => {
-    fetchBlogs();
-  }, []);
+  // useEffect(() => {
+  //   fetchBlogs();
+  // }, []);
 
   // Effect for debounced search
   useEffect(() => {
