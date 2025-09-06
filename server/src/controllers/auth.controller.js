@@ -27,8 +27,8 @@ export const googleAuthSuccess = asyncHandler(async (req, res, next) => {
     res.cookie("suneditorToken", token, {
       expires: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000), // 90 days
       httpOnly: true,
-      // secure: true,
-      // sameSite: "none",
+      secure: true,
+      sameSite: "none",
     });
 
     // redirect without query params
@@ -74,8 +74,8 @@ export const logout = asyncHandler(async (req, res, next) => {
     // Clear the authentication cookie
     res.clearCookie("suneditorToken", {
       httpOnly: true,
-      // secure: true,
-      // sameSite: "none",
+      secure: true,
+      sameSite: "none",
     });
 
     return res.status(200).json({
