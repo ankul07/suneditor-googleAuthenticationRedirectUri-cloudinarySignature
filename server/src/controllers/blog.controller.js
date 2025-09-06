@@ -99,7 +99,7 @@ export const publishedBlogs = asyncHandler(async (req, res, next) => {
 
   // Get blogs with pagination
   const blogs = await Blog.find(query)
-    // .populate("author._id", "name avatar")
+    .populate("author._id", "name avatar")
     .sort({ createdAt: -1 })
     .skip(skip)
     .limit(limit);
